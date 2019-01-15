@@ -10,9 +10,22 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet private weak var collectionView: UICollectionView!
+    
+    private var dataSource: DataSource!
+    private var delegate: Delegate!
+    
+    private let numbers = [1, 2, 3, 4, 5, 6]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        dataSource = DataSource(collectionView: collectionView, numbers: numbers)
+        delegate = Delegate(collectionView: collectionView, numbers: numbers)
+        
+        collectionView.dataSource = dataSource
+        collectionView.delegate = delegate
+        
     }
 
 
